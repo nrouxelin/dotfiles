@@ -10,3 +10,4 @@ alias 2node="srun -N 2 --cpus-per-task 24 --exclusive --time 02:00:00 --pty bash
 alias courtnode="srun -N 1 -p court --cpus-per-task 24 --exclusive --time 02:00:00 --pty bash -i "
 
 alias ll="ls -lhrt"
+alias v="vim"
