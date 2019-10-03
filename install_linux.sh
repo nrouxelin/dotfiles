@@ -11,8 +11,11 @@ mkdir -p $backup_dir
 
 for file in $files
 do
-  echo "Back-up existing dotfiles to $backup_dir"
-  mv ~/$file $backup_dir/
+  if [ -f "$file" ];
+  then
+    echo "Back-up existing dotfiles to $backup_dir"
+    mv ~/$file $backup_dir/
+  fi
   echo "Creating symlink to $file in the home directory"
   ln -s $dir/$file ~/$file
 done
