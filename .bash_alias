@@ -1,6 +1,7 @@
 # .bashrc
 
 # User specific aliases and functions
+alias cd..="cd ../"
 alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
@@ -11,3 +12,15 @@ alias courtnode="srun -N 1 -p court --cpus-per-task 24 --exclusive --time 02:00:
 
 alias ll="ls -lhrt"
 alias v="vim"
+
+alias mkdir="mkdir -pv"
+
+watch_file_changes()
+{
+  watch -n 2 -d "cat $1 | grep $2"
+}
+
+search_files()
+{
+  find $1 -name "$2" | xargs grep "$3" -sl
+}
