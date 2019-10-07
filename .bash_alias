@@ -1,4 +1,6 @@
 # .bashrc
+# zsh-like autocomplete
+bind 'TAB:menu-complete'
 
 # User specific aliases and functions
 alias cd..="cd ../"
