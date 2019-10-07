@@ -1,5 +1,6 @@
 # .bashrc
 # zsh-like autocomplete
+bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
 # User specific aliases and functions
