@@ -9,6 +9,9 @@ alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
 
+# implied cd
+shopt -s autocd
+
 alias 1node="srun -N 1 --cpus-per-task 24 --exclusive --time 02:00:00 --pty bash -i "
 alias 2node="srun -N 2 --cpus-per-task 24 --exclusive --time 02:00:00 --pty bash -i "
 alias courtnode="srun -N 1 -p court --cpus-per-task 24 --exclusive --time 02:00:00 --pty bash -i "
