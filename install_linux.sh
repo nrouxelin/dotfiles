@@ -20,8 +20,12 @@ do
   ln -s $dir/$file ~/$file
 done
 
-echo "Sourcing bash_alias"
-echo "source ~/.bash_alias" >> ~/.bashrc
+s=$(cat ~/.bashrc | grep "source ~/.bash_alias")
+if [ -z $s ];
+then
+  echo "Sourcing bash_alias"
+  echo "source ~/.bash_alias" >> ~/.bashrc
+fi
 
 echo "Sourcing new bash config"
 source ~/.bashrc
