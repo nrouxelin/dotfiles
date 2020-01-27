@@ -3,7 +3,7 @@
 dir=$(pwd)
 
 # Files to consider
-files=".vimrc .tmux.conf .vim .bash_alias"
+files=".vimrc .tmux.conf  .bash_alias"
 
 backup_dir=~/old_dotfiles
 echo "Creating $backup_dir to backup any existing dotfile"
@@ -31,7 +31,12 @@ echo "Sourcing new bash config"
 source ~/.bashrc
 
 # installing vim plug-ins
+if [ ! -d "~/.vim" ];
+then
+  mkdir ~/.vim
+fi
 cd ~/.vim
 git clone https://github.com/dracula/vim.git bundle/dracula
 git clone https://github.com/itchyny/lightline.vim.git bundle/lightline.vim
 
+ln -s $dir/.vim ~/.vim

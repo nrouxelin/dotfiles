@@ -16,7 +16,7 @@ alias 1node="srun -N 1 -p court --cpus-per-task 24 --exclusive --time 04:00:00 -
 alias 2node="srun -N 2 -p court --cpus-per-task 24 --exclusive --time 04:00:00 --pty bash -i "
 
 alias ll="ls -lhrt"
-alias v="vim"
+alias v="vim -p"
 
 alias mkdir="mkdir -pv"
 
@@ -42,4 +42,34 @@ man_aliases()
 {
   echo "watch_file_changes file_name str"
   echo "search_files dir_name file_regexp str_regexp"
+  echo "nodes number_nodes type_nodes"
 }
+
+
+nodes()
+{
+  # check if second argument exists, if not we want a miriel
+  if [ ! -z "$2" ];
+  then
+    node_type=$2
+  else
+    node_type="miriel"
+  fi
+
+  
+  # check if first arguement is a number, if not we want one node
+  # trick : use -eq to check integer equality btw $1 and $1
+  # /!\ does not work with [[ ... ]] and we need to redirect std err to /dev/null to avoid error message "int value expected"
+  if [ "$1" -eq "$1" ] 2> /dev/null
+  then
+    number_nodes=$1
+  else
+    number_nodes=1
+  fi
+
+  # launch the command
+  srun -N $number_nodes -C $node_type --ntasks=8 --exclusive --time 04:00:00 --pty bash -i
+}
+
+export PS1="\[\033[00;35m\]\h\[\033[00;36m\]:\[\033[00;35m\]\w \[\033[00;36m\]:\[\033[00;32m\] \t \[\033[00;36m\]\$ \[\033[00m\]"
+
