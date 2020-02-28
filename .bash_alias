@@ -12,8 +12,8 @@ alias ....="cd ../../../"
 # implied cd
 shopt -s autocd
 
-alias 1node="srun -N 1 -p court --cpus-per-task 24 --exclusive --time 04:00:00 --pty bash -i "
-alias 2node="srun -N 2 -p court --cpus-per-task 24 --exclusive --time 04:00:00 --pty bash -i "
+alias 1node="srun -N 1 -C bora --cpus-per-task 36 --exclusive --time 04:00:00 --pty bash -i "
+alias 2node="srun -N 2 -C bora --cpus-per-task 36 --exclusive --time 04:00:00 --pty bash -i "
 
 alias ll="ls -lhrt"
 alias v="vim -p"
@@ -71,7 +71,7 @@ nodes()
 
 
   # launch the command
-  srun -N $number_nodes -c $nb_cores -C $node_type --ntasks=8 --exclusive --time 04:00:00 --pty bash -i
+  srun -N $number_nodes -c $nb_cores -C $node_type --exclusive --time 04:00:00 --pty bash -i
 }
 
 export PS1="\[\033[00;35m\]\h\[\033[00;36m\]:\[\033[00;35m\]\w \[\033[00;36m\]:\[\033[00;32m\] \t \[\033[00;36m\]\$ \[\033[00m\]"
