@@ -52,8 +52,10 @@ nodes()
   if [ ! -z "$2" ];
   then
     node_type=$2
+    nb_cores=24
   else
-    node_type="miriel"
+    node_type="bora"
+    nb_cores=36
   fi
 
   
@@ -67,8 +69,9 @@ nodes()
     number_nodes=1
   fi
 
+
   # launch the command
-  srun -N $number_nodes -C $node_type --ntasks=8 --exclusive --time 04:00:00 --pty bash -i
+  srun -N $number_nodes -c $nb_cores -C $node_type --ntasks=8 --exclusive --time 04:00:00 --pty bash -i
 }
 
 export PS1="\[\033[00;35m\]\h\[\033[00;36m\]:\[\033[00;35m\]\w \[\033[00;36m\]:\[\033[00;32m\] \t \[\033[00;36m\]\$ \[\033[00m\]"
