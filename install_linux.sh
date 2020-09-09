@@ -31,6 +31,7 @@ echo "Sourcing new bash config"
 source ~/.bashrc
 
 # installing vim plug-ins
+echo "Installing some vim plug-ins (using pathogen)"
 if [ ! -d "~/.vim" ];
 then
   mkdir ~/.vim
